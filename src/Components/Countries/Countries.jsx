@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
+import Country from "./Country/Country";
 
 const Countries = () => {
     const[countries, setCountries] = useState([]);
     useEffect (() => {
-        fetch('https://restcountries.com/v3.1/all?fields=name,capital,currencies')
+        fetch('https://restcountries.com/v3.1/all?fields=name,flags,co')
         .then(res => res.json())
         .then(data => setCountries(data))
     },[])
+
     return (
         <div>
-            <h3>Countries = {countries.length}</h3>
-         {
-            countries.map(Country => <Countries country ={Country}></Countries>)
-         }      
-            
+            <h3>Total countries = {countries.length}</h3>
+           {
+             countries.map(country => <Country key={country.name.official} country={country}></Country>)
+           }
+         
             
         </div>
     );
