@@ -6,6 +6,7 @@ import './Countries.css';
 const Countries = () => {
     const[countries, setCountries] = useState([]);
      const[visitedCountries, setVisitedCountries] = useState([]);
+     const[visitedFlags, setVisitedFlags] = useState([]);
    
 
     useEffect (() => {
@@ -19,10 +20,15 @@ const Countries = () => {
       const newVisitedCountries = [...visitedCountries, country]
       setVisitedCountries(newVisitedCountries);
     }
+    const handleVisitedFlags = flag => {
+        const newVisitedFlag = [...visitedFlags, flag];
+        setVisitedFlags(newVisitedFlag);
+    }
 
     return(
         <div>
             <h3>Total countries = {countries.length}</h3>
+            {/* visited country */} 
         <div>
                 <h5>Visited countries:{visitedCountries.length}</h5>
                 <ul>
@@ -32,11 +38,20 @@ const Countries = () => {
                
                </ul>
         </div>
+        <div className="flag-container">
+            {
+                visitedFlags.map(flag => <img src={flag}></img>)
+            }
+
+        </div>
+
+        {/* displays countries */}
             <div className="country-countainer">
                   {
            countries.map(country => <Country key={country.cca3}
            handleVisitedCountry={handleVisitedCountry}
             country={country}>
+                handleVisitedFlags ={handleVisitedFlags}
 
            </Country>)
         }

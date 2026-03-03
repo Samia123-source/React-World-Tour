@@ -2,6 +2,8 @@
     border:2px solid steelblue;
     margin: 15px;
     padding: 5px;
-    border-radius: 10px;
-    
+    border-radius: 10px;   
+}
+.flag-container img{
+    width: 50px;
 }
