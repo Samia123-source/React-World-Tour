@@ -16,17 +16,21 @@ const Countries = () => {
    
     const handleVisitedCountry = country => 
     {console.log('add this to your visited country');
-        console.log(country);
+      const newVisitedCountries = [...visitedCountries, country]
+      setVisitedCountries(newVisitedCountries);
     }
 
     return(
         <div>
             <h3>Total countries = {countries.length}</h3>
         <div>
-                <h5>Visited countries</h5>
+                <h5>Visited countries:{visitedCountries.length}</h5>
                 <ul>
-
-                </ul>
+                {
+                      visitedCountries.map(country => <li key={country.cca3}>{country.name.common}</li>)
+                }
+               
+               </ul>
         </div>
             <div className="country-countainer">
                   {
